@@ -1,23 +1,23 @@
-TRUE  = lambda a: lambda b: (a)
+TRUE = lambda a: lambda b: (a)
 FALSE = lambda a: lambda b: (b)
 
 
-(TRUE)(True)(False) == True
-(FALSE)(True)(False) == False
+(TRUE)(True)(False) is True
+(FALSE)(True)(False) is False
 
 
 AND = lambda a: lambda b: (a)(b)(a)
-OR  = lambda a: lambda b: (a)(a)(b)
+OR = lambda a: lambda b: (a)(a)(b)
 NOT = lambda a: lambda b: lambda c: (a)(c)(b)
 
 
 (AND)(TRUE)(FALSE) == (FALSE)
-(AND)(TRUE)(FALSE)(True)(False) == False
+(AND)(TRUE)(FALSE)(True)(False) is False
 
 
 CONS = lambda a: lambda b: lambda c: (c)(a)(b)
-CAR  = lambda a: (a)(TRUE)
-CDR  = lambda a: (a)(FALSE)
+CAR = lambda a: (a)(TRUE)
+CDR = lambda a: (a)(FALSE)
 
 
 (CAR)((CONS)(1)(2)) == 1
@@ -27,8 +27,8 @@ CDR  = lambda a: (a)(FALSE)
 UNCHURCH_BOOLEAN = (CONS)(True)(False)
 
 
-(UNCHURCH_BOOLEAN)((NOT)(TRUE)) == False
-(UNCHURCH_BOOLEAN)((OR)(TRUE)(FALSE)) == True
+(UNCHURCH_BOOLEAN)((NOT)(TRUE)) is False
+(UNCHURCH_BOOLEAN)((OR)(TRUE)(FALSE)) is True
 
 
 ZERO = FALSE
@@ -46,7 +46,7 @@ def church_number(n):
 
 PLUS = lambda a: lambda b: lambda c: lambda d: (a)(c)((b)(c)(d))
 MULT = lambda a: lambda b: lambda c: (b)((a)(c))
-EXP  = lambda a: lambda b: (b)(a)
+EXP = lambda a: lambda b: (b)(a)
 
 
 UNCHURCH_NUMBER = lambda a: (a)(lambda b: b + 1)(0)
